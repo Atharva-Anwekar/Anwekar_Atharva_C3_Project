@@ -67,4 +67,8 @@ public class Restaurant {
         return name;
     }
 
+    public Double calculateTotalOrderValue(List<String> items){
+        return 0.0;
+    }
+
 }

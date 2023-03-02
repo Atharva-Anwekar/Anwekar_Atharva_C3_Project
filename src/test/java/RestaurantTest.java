@@ -3,7 +3,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RestaurantTest {
@@ -69,5 +73,11 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
+    @Test
+    public void calculateOrderValue_should_return_total_value_of_the_order(){
+        Double expectedOrderValue = 10.0;
+        ArrayList<String> itemList = new ArrayList<>(Arrays.asList("item1","item2","item3"));
+        Double totalCalculatedOrderValue = restaurant.calculateTotalOrderValue(itemList); ;
+        assertThat(totalCalculatedOrderValue,equalTo(expectedOrderValue));
+    }
 }
