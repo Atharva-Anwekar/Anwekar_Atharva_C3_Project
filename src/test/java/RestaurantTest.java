@@ -5,6 +5,7 @@ import org.mockito.Mockito;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -20,6 +21,8 @@ class RestaurantTest {
         restaurant = new Restaurant("Amelie's cafe", "Chennai", openingTime, closingTime);
         restaurant.addToMenu("Sweet corn soup", 119);
         restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Chicken soup", 149);
+        restaurant.addToMenu("Pizza", 239);
     }
     //REFACTOR ALL THE REPEATED LINES OF CODE
 
@@ -75,9 +78,9 @@ class RestaurantTest {
 
     @Test
     public void calculateOrderValue_should_return_total_value_of_the_order(){
-        Double expectedOrderValue = 10.0;
-        ArrayList<String> itemList = new ArrayList<>(Arrays.asList("item1","item2","item3"));
-        Double totalCalculatedOrderValue = restaurant.calculateTotalOrderValue(itemList); ;
+        int expectedOrderValue = 388;
+        List<String> itemList = new ArrayList<>(Arrays.asList("Chicken soup","Pizza"));
+        int totalCalculatedOrderValue = restaurant.calculateTotalOrderValue(itemList);
         assertThat(totalCalculatedOrderValue,equalTo(expectedOrderValue));
     }
 }
